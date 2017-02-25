@@ -18,7 +18,7 @@ test:
   override:
     - npm run test
 
-deploy:
+deployment:
   override:
     - npm run browser:deploy
     - npm run server:deploy
