@@ -1,6 +1,11 @@
+machine:
+  node:
+    version: 4.3
+
 dependencies:
   override:
     - npm install
+
 compile:
   pre:
     - npm run clean
