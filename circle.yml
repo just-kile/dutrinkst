@@ -1,0 +1,18 @@
+dependencies:
+  override:
+    - npm install
+compile:
+  pre:
+    - npm run clean
+    - npm run lint
+  override:
+    - npm run browser:build
+
+test:
+  override:
+    - npm run test
+
+deploy:
+  override:
+    - npm run browser:deploy
+    - npm run server:deploy
