@@ -4,21 +4,21 @@ machine:
     version: 4.3
 
 dependencies:
+  cache_directories:
+    - node_modules
   override:
-    - npm install
-
-compile:
-  pre:
-    - npm run clean
+    - npm prune && npm install
+  post:
     - npm run lint
-  override:
-    - npm run browser:build
+    - npm run clean && npm run browser:build
 
 test:
   override:
     - npm run test
 
 deployment:
-  override:
-    - npm run browser:deploy
-    - npm run server:deploy
+  production:
+    branch: master
+    commands:
+      - npm run browser:deploy
+      - npm run server:deploy
