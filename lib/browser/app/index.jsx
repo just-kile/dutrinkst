@@ -72,7 +72,7 @@ class App extends Component {
           />
 
         </div>
-        <div className="copyright">Created by B&sup2;</div>
+        <div className="copyright">Original idea of B&sup2;</div>
       </div>
     );
   }
