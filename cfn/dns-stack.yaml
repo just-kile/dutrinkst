@@ -1,0 +1,13 @@
+region: eu-west-1
+
+stacks:
+  dutrinkst-dns-stack:
+    template-url: templates/dns.yaml
+    timeout: 1200
+    parameters:
+      apiGatewayEndpoint: '|Ref|dutrinkst-prod.ServiceEndpoint'
+      dnsPrefix: 'dutrinkst'
+      dnsBaseName: 'cornetto.cloud'
+      restApiId: '|Ref|dutrinkst-prod.ApiGatewayRestApiId'
+      # cannot reference because of other region (needs to be us-east-1)
+      certificateArn: 'arn:aws:acm:us-east-1:111580521549:certificate/19bbb412-e23c-43dd-84e0-5e633c685f4d'

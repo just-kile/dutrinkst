@@ -3,9 +3,9 @@ service: dutrinkst # NOTE: update this with your service name
 
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs6.10
 
-  stage: dev
+  stage: prod
   region: eu-west-1
   profile: default
 
@@ -26,7 +26,14 @@ functions:
     events:
       - http:
           method: GET
-          path: dutrinkst
+          path: /
           integration: lambda
           request: ${file(./serverless.templates.yml):request-html}
           response: ${file(./serverless.templates.yml):response-html}
+
+resources:
+   Outputs:
+      ApiGatewayRestApiId:
+        Description: The Id of the restapi
+        Value:
+          'Ref': ApiGatewayRestApi
