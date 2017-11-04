@@ -1,8 +1,10 @@
-var gulp = require("gulp"),
-  serve = require("gulp-serve");
+const gulp = require('gulp');
+const serve = require('gulp-serve');
 
-gulp.task('_serve',serve({
-  root:["./target/assets"],
-  port:9211
+gulp.task('_serve', serve({
+  root: ['./target/assets','./target/page'],
+  port: 2999,
 }));
+
+
 

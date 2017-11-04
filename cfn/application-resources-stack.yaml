@@ -1,0 +1,20 @@
+region: eu-central-1
+
+stacks:
+  dutrinkst-assets:
+    template-url: templates/assets.yaml
+    timeout: 1200
+    parameters:
+      bucketName: 'dutrinkst-assets'
+      # random identifier
+      originId: 's3-dutrinkst-assets'
+      originPath: '/assets'
+
+  dutrinkst-page:
+    template-url: templates/page.yaml
+    timeout: 1200
+    parameters:
+      bucketName: 'dutrinkst.cornetto.cloud'
+      originId: 's3-dutrinkst-page'
+      domainName: 'dutrinkst.cornetto.cloud'
+      certificateArn: 'arn:aws:acm:us-east-1:111580521549:certificate/19bbb412-e23c-43dd-84e0-5e633c685f4d'

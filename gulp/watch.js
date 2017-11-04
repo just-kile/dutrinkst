@@ -1,20 +1,26 @@
-var gulp = require("gulp");
-var path = require("path");
-var bs = require("browser-sync");
+const gulp = require('gulp');
+const path = require('path');
+const bs = require('browser-sync');
+const runSequence = require('run-sequence');
 
-gulp.task('_watch', ["_start:bs",'_scripts:watch'], function () {
-  gulp.watch(path.resolve(__dirname + "/../handler.js"), ["_reload"]);
-  gulp.watch(path.resolve(__dirname + "/../lib/server/**/*"), ["_reload"]);
+gulp.task('_watch:files', () => {
+  gulp.watch(path.resolve(`${__dirname}/../target/rev-manifest.json`), ['html:dev']);
 });
 
-gulp.task("_reload", function () {
-  console.log("Reload browser-sync");
+gulp.task('_watch', () => {
+  runSequence(
+    ['_start:bs', '_scripts:watch'],
+    'html:dev',
+    '_watch:files');
+});
+gulp.task('_reload', () => {
+  console.log('Reload browser-sync');
   bs.reload();
 });
 
-gulp.task("_start:bs", function () {
+gulp.task('_start:bs', () => {
   bs({
-    proxy: "http://localhost:2999",
-    open: false
+    proxy: 'http://localhost:2999',
+    open: false,
   });
 });
