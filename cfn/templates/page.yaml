@@ -62,7 +62,7 @@ Resources:
           ForwardedValues:
             QueryString: false
           TargetOriginId: !Ref originId
-          ViewerProtocolPolicy: 'https-only'
+          ViewerProtocolPolicy: 'redirect-to-https'
         ViewerCertificate:
           AcmCertificateArn: !Ref certificateArn
           SslSupportMethod: sni-only
