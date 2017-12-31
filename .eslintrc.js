@@ -1,4 +1,11 @@
 module.exports = {
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: 'webpack.browser.dev.config.js',
+      },
+    },
+  },
   extends: 'airbnb',
   plugins: [
     'react',
