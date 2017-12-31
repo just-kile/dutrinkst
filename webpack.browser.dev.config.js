@@ -14,7 +14,13 @@ module.exports = {
     filename: 'bundle-[hash].js'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      react: 'preact-compat',
+      'react-dom': 'preact-compat',
+      // Not necessary unless you consume a module using `createClass`
+      'create-react-class': 'preact-compat/lib/create-react-class',
+    },
   },
   devtool: 'source-map',
   plugins: [

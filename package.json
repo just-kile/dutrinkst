@@ -8,11 +8,12 @@
     "test": "npm run unit",
     "server": "gulp serve",
     "watch": "npm run clean && (npm run server & gulp watch & npm run unit:watch)",
-    "start": "npm run clean && npm run browser:build && npm run server",
+    "start": "npm run clean && npm run browser:build:dev && npm run server",
     "deploy": "npm run build && (npm run browser:deploy & npm run server:deploy)",
     "server:deploy": "gulp deploy:page",
     "browser:deploy": "gulp deploy:assets",
     "browser:build": "gulp build:client && gulp html",
+    "browser:build:dev": "gulp build:client && gulp html:dev",
     "unit:server": "echo 'No server tests'",
     "unit:browser": "ava lib/browser/**/*.spec.js --source 'lib/browser/**/*!(spec).js' --require ./test/browser/setup-browser-env.js --require babel-register --require ignore-styles",
     "unit:server:watch": "npm run unit:server -- --watch",
@@ -27,7 +28,9 @@
   "license": "MIT",
   "dependencies": {
     "confidence": "^3.0.2",
-    "lodash": "^4.16.4"
+    "lodash": "^4.16.4",
+    "preact": "^8.2.7",
+    "preact-compat": "^3.17.0"
   },
   "devDependencies": {
     "ava": "^0.16.0",
@@ -62,9 +65,7 @@
     "json-loader": "^0.5.4",
     "lodash": "^4.16.4",
     "mkdirp": "^0.5.1",
-    "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
-    "react-dom": "^15.3.2",
     "require-dir": "^0.3.1",
     "run-sequence": "^2.2.0",
     "sinon": "^1.17.6",
